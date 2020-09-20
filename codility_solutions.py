@@ -15,11 +15,15 @@
 #     return a
 
 # lesson 2 odd occurrences in array
-def solution(A):
-    if not A:
-        return 0
+# def solution(A):
+#     if not A:
+#         return 0
     
-    from collections import Counter
-    counter = Counter(A)
-    odd = [e[0] for e in counter.items() if e[1] % 2 == 1]
-    return odd.pop()
+#     from collections import Counter
+#     counter = Counter(A)
+#     odd = [e[0] for e in counter.items() if e[1] % 2 == 1]
+#     return odd.pop()
+
+# lesson 3 frog jump
+def solution(X, Y, D):
+    return (Y - X)//D + ((Y - X) % D != 0)
