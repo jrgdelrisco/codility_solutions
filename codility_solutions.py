@@ -25,5 +25,12 @@
 #     return odd.pop()
 
 # lesson 3 frog jump
-def solution(X, Y, D):
-    return (Y - X)//D + ((Y - X) % D != 0)
+# def solution(X, Y, D):
+#     return (Y - X)//D + ((Y - X) % D != 0)
+
+# lesson 3 find the missing element in a given permutation
+def solution(A):
+    found = [0] * (len(A) + 1)
+    for a in A:
+        found[a - 1] = a
+    return found.index(0) + 1
