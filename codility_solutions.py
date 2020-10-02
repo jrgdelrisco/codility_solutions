@@ -50,14 +50,33 @@
 #     return minimum
 
 #lesson 4  frog river one
-def solution(X, A):
-    positions_set = set(A)
-    valid_pos_count = 0
-    for second, a in enumerate(A):
-        if a <= X and a in positions_set:
-            positions_set.remove(a)
-            valid_pos_count+=1
-        if valid_pos_count == X:
-            return second
-    return -1
-        
+# def solution(X, A):
+#     positions_set = set(A)
+#     valid_pos_count = 0
+#     for second, a in enumerate(A):
+#         if a <= X and a in positions_set:
+#             positions_set.remove(a)
+#             valid_pos_count+=1
+#         if valid_pos_count == X:
+#             return second
+#     return -1
+
+#lesson 4  max counters
+def solution(N, A):
+    counters = [0] * N
+    max_counter = 0
+    last_fill = 0
+    for a in A:
+        if a <= N:
+            if counters[a - 1] < last_fill:
+                counters[a - 1] = last_fill
+            counters[a - 1] += 1
+            if max_counter < counters[a - 1]:
+                max_counter = counters[a - 1]
+        else:
+            last_fill = max_counter
+    return list(map(lambda c: max(c, last_fill), counters))
+
+
+print("Result:")
+print(solution(5, [3,4,4,6,4,6,1,4,4]))
