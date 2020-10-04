@@ -62,21 +62,31 @@
 #     return -1
 
 #lesson 4  max counters
-def solution(N, A):
-    counters = [0] * N
-    max_counter = 0
-    last_fill = 0
-    for a in A:
-        if a <= N:
-            if counters[a - 1] < last_fill:
-                counters[a - 1] = last_fill
-            counters[a - 1] += 1
-            if max_counter < counters[a - 1]:
-                max_counter = counters[a - 1]
-        else:
-            last_fill = max_counter
-    return list(map(lambda c: max(c, last_fill), counters))
+# def solution(N, A):
+#     counters = [0] * N
+#     max_counter = 0
+#     last_fill = 0
+#     for a in A:
+#         if a <= N:
+#             if counters[a - 1] < last_fill:
+#                 counters[a - 1] = last_fill
+#             counters[a - 1] += 1
+#             if max_counter < counters[a - 1]:
+#                 max_counter = counters[a - 1]
+#         else:
+#             last_fill = max_counter
+#     return list(map(lambda c: max(c, last_fill), counters))
 
-
-print("Result:")
-print(solution(5, [3,4,4,6,4,6,1,4,4]))
+#lesson 4  max counters
+def solution(A):
+    positive = list(filter(lambda x: x > 0, A))
+    if not positive:
+        return 1
+    max_positive = max(positive)
+    found = [0] * max_positive
+    for i in range(len(A)):
+        if A[i] > 0 and not found[A[i] - 1]:
+            found[A[i] - 1] = A[i]
+    if all(found):
+        return max_positive + 1
+    return found.index(0) + 1
