@@ -77,7 +77,7 @@
 #             last_fill = max_counter
 #     return list(map(lambda c: max(c, last_fill), counters))
 
-#lesson 4  max counters
+#lesson 4  missing integer
 def solution(A):
     positive = list(filter(lambda x: x > 0, A))
     if not positive:
