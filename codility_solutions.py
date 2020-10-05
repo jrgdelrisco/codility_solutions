@@ -78,15 +78,25 @@
 #     return list(map(lambda c: max(c, last_fill), counters))
 
 #lesson 4  missing integer
+# def solution(A):
+#     positive = list(filter(lambda x: x > 0, A))
+#     if not positive:
+#         return 1
+#     max_positive = max(positive)
+#     found = [0] * max_positive
+#     for i in range(len(A)):
+#         if A[i] > 0 and not found[A[i] - 1]:
+#             found[A[i] - 1] = A[i]
+#     if all(found):
+#         return max_positive + 1
+#     return found.index(0) + 1
+
+#lesson 4  perm check
 def solution(A):
-    positive = list(filter(lambda x: x > 0, A))
-    if not positive:
-        return 1
-    max_positive = max(positive)
-    found = [0] * max_positive
-    for i in range(len(A)):
-        if A[i] > 0 and not found[A[i] - 1]:
-            found[A[i] - 1] = A[i]
-    if all(found):
-        return max_positive + 1
-    return found.index(0) + 1
+    n = len(A)
+    checked = [False] * n
+    for a in A:
+        if a > n or checked[a - 1]:
+            return 0
+        checked[a - 1] = True
+    return 1
